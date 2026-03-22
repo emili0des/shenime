@@ -19,7 +19,7 @@ export function AtmDetailsModal({ balance, status, onClose }: AtmDetailsModalPro
   };
 
   const getComponentStatus = (componentStatus: string | null | undefined) => {
-    const decoded = decodeDeviceStatus(componentStatus);
+    const decoded = decodeDeviceStatus(componentStatus ?? null);
     if (!decoded) return { color: 'text-gray-500', bg: 'bg-gray-100', text: 'Unknown', icon: '?', details: '' };
 
     const colorClass = getStatusColor(decoded.status);
@@ -163,7 +163,7 @@ export function AtmDetailsModal({ balance, status, onClose }: AtmDetailsModalPro
                 </div>
 
                 <div className="space-y-3">
-                  {status.door !== undefined && (
+                  {status.door !== null && (
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Door:</span>
                       <span className={`px-3 py-1 rounded-full text-xs font-medium ${getComponentStatus(status.door).bg} ${getComponentStatus(status.door).color}`} title={getComponentStatus(status.door).details}>
@@ -177,7 +177,7 @@ export function AtmDetailsModal({ balance, status, onClose }: AtmDetailsModalPro
                       {getComponentStatus(status.encryptor).text}
                     </span>
                   </div>
-                  {status.card_bin !== undefined && (
+                  {status.card_bin !== null && (
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Card Bin:</span>
                       <span className={`px-3 py-1 rounded-full text-xs font-medium ${getComponentStatus(status.card_bin).bg} ${getComponentStatus(status.card_bin).color}`} title={getComponentStatus(status.card_bin).details}>
@@ -185,7 +185,7 @@ export function AtmDetailsModal({ balance, status, onClose }: AtmDetailsModalPro
                       </span>
                     </div>
                   )}
-                  {status.rej_bin !== undefined && (
+                  {status.rej_bin !== null && (
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Reject Bin:</span>
                       <span className={`px-3 py-1 rounded-full text-xs font-medium ${getComponentStatus(status.rej_bin).bg} ${getComponentStatus(status.rej_bin).color}`} title={getComponentStatus(status.rej_bin).details}>
@@ -282,4 +282,3 @@ export function AtmDetailsModal({ balance, status, onClose }: AtmDetailsModalPro
     </div>
   );
 }
- 
