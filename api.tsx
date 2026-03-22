@@ -36,8 +36,13 @@ export interface AtmStatus {
   bil_cas5?: string | null;
   bil_cas6?: string | null;
   bil_cas7?: string | null;
+  print_user?: string | null;
+  door?: string | null;
+  card_bin?: string | null;
+  rej_bin?: string | null;
   owner?: string | null;
   sup_vs?: string | null;
+  branch?: string | null;
 }
 
 export async function fetchLatestBalances(): Promise<AtmBalance[]> {
@@ -55,3 +60,4 @@ export async function fetchLatestStatuses(): Promise<AtmStatus[]> {
   }
   return response.json();
 }
+
