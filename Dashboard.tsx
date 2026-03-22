@@ -54,7 +54,7 @@ export function Dashboard() {
     try {
       const data = await fetchLatestBalances();
       if (data && data.length > 0) {
-        const latestFileName = data[0].file_name;
+        const latestFileName = data[0].file_name ?? '';
         const isNewFile = snapshotManager.isNewFile(latestFileName);
 
         setBalances(data);
@@ -77,7 +77,7 @@ export function Dashboard() {
           };
           snapshotManager.updateSnapshot(
             latestFileName,
-            data[0].balance_date || '',
+            data[0].balance_date ?? '',
             data,
             [],
             stats,
@@ -94,7 +94,7 @@ export function Dashboard() {
     try {
       const data = await fetchLatestStatuses();
       if (data && data.length > 0) {
-        const latestFileName = data[0].file_name;
+        const latestFileName = data[0].file_name ?? '';
         const isNewFile = snapshotManager.isNewFile(latestFileName);
 
         setStatuses(data);
