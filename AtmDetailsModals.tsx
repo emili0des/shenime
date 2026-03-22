@@ -152,7 +152,7 @@ export function AtmDetailsModal({ balance, status, onClose }: AtmDetailsModalPro
                       {getComponentStatus(status.dispenser).text}
                     </span>
                   </div>
-                  {status.print_user !== undefined && (
+                  {status.print_user !== null && (
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Printer (User):</span>
                       <span className={`px-3 py-1 rounded-full text-xs font-medium ${getComponentStatus(status.print_user).bg} ${getComponentStatus(status.print_user).color}`} title={getComponentStatus(status.print_user).details}>
