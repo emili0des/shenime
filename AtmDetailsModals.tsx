@@ -282,3 +282,4 @@ export function AtmDetailsModal({ balance, status, onClose }: AtmDetailsModalPro
     </div>
   );
 }
+ 
